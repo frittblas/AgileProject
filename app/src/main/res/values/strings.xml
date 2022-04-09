@@ -3,4 +3,8 @@
     <string name="login">Login</string>
     <string name="name">Name</string>
     <string name="password">Password</string>
+    <string name="you_re_logged_in_as">You\'re logged in as:</string>
+    
+    <string name="how_many_pushups">How many pushups:</string>
+    <string name="_0">0</string>
 </resources>
