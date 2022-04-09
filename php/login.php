@@ -19,7 +19,7 @@ $submitData["user_name"] = addslashes($submitData["user_name"]);
 $submitData["password"]  = addslashes($submitData["password"]);
 
 
-// connect to the database
+// connect to the database, these login credentials are not the real ones
 
 $db_host = 'mysql410.blabla';
 $db_username = 'agiledev@blabla';
