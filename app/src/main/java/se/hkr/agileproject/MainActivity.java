@@ -11,6 +11,9 @@ import android.widget.Toast;
 import com.android.volley.*;
 import com.android.volley.toolbox.*;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -78,5 +81,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Returns a string with 61 chars
+    public String Encrypt(String password) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        md.update(password.getBytes());
+        byte[] digest = md.digest();
+        StringBuilder hexString = new StringBuilder();
 
+        for (byte b : digest) {
+            hexString.append(Integer.toHexString(0xFF & b));
+        }
+        return hexString.toString();
+    }
 }
