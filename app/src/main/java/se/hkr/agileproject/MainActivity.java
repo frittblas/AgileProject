@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
     }
 
@@ -28,10 +28,10 @@ public class MainActivity extends AppCompatActivity {
 
         //v.setEnabled(false);
 
-        EditText user_name = findViewById(R.id.edit_name);
-        EditText password  = findViewById(R.id.edit_pwd);
+        EditText username = findViewById(R.id.username);
+        EditText password  = findViewById(R.id.password);
 
-        String str_user_name = user_name.getText().toString();
+        String str_user_name = username.getText().toString();
         String str_password  = password.getText().toString();
 
         if(!str_user_name.isEmpty() && !str_password.isEmpty())
@@ -41,17 +41,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void switchActivity(String name) {
 
-        Intent myIntent = new Intent(this, StartScreenActivity.class);
-        myIntent.putExtra("user_name", name);
+        Intent myIntent = new Intent(this, HomeActivity.class);
+        myIntent.putExtra("username", name);
         startActivity(myIntent);
 
     }
 
-    public void tryLogin(String user_name, String password) {
+    public void tryLogin(String username, String password) {
 
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="https://frittblas.se/agileproject/login.php" +
-                    "?user_name=" + user_name + "&password=" + password;
+                    "?username=" + username + "&password=" + password;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -59,11 +59,11 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         // check if the response is good
-                        if(response.compareTo(user_name) == 0) {
+                        if(response.compareTo(username) == 0) {
                             // show a short little success msg (toast)
                             Toast.makeText(getApplicationContext(), "Logged in " + response, Toast.LENGTH_SHORT).show();
                             // switch activity to the start screen
-                            switchActivity(user_name);
+                            switchActivity(username);
                         }
                         else {
                             // show a short little error msg
