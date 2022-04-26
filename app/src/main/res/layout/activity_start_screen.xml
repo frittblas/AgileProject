@@ -11,13 +11,13 @@
         android:layout_width="176dp"
         android:layout_height="44dp"
         android:text="@string/you_re_logged_in_as"
-        app:layout_constraintBottom_toTopOf="@+id/user_name"
+        app:layout_constraintBottom_toTopOf="@+id/user_name_logged_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/user_name"
+        android:id="@+id/user_name_logged_in"
         android:layout_width="109dp"
         android:layout_height="40dp"
         android:text="@string/name"
@@ -34,7 +34,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_name" />
+        app:layout_constraintTop_toBottomOf="@+id/user_name_logged_in" />
 
     <TextView
         android:id="@+id/textView6"
