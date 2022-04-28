@@ -14,8 +14,8 @@ public class StartScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start_screen);
 
         Intent myIntent = getIntent();
-        String user_name = myIntent.getStringExtra("user_name");
-        ((TextView)findViewById(R.id.user_name)).setText(user_name);
+        String username = myIntent.getStringExtra("username");
+        ((TextView)findViewById(R.id.user_name_logged_in)).setText(username);
 
     }
 }
