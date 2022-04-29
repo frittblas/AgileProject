@@ -18,4 +18,5 @@
     <string name="the_wall">The Wall</string>
     <string name="latest_wall_post">Latest wall post</string>
     <string name="i_just_ran_15_miles">I just ran 15 miles!</string>
+    <string name="activity_name">activity_name</string>
 </resources>

@@ -13,41 +13,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/purple_500"
-        android:padding="30dp"
+        android:padding="15dp"
         app:layout_constraintBaseline_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnBack"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/ic_baseline_arrow_back_24"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginStart="1dp"
             android:layout_marginTop="15dp"
-            app:layout_constraintBottom_toTopOf="@+id/textRegister"
-            app:layout_constraintEnd_toStartOf="@+id/textHello"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:background="@drawable/ic_baseline_arrow_back_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
-        <!--<TextView
-            android:id="@+id/textHello"
+        <TextView
+            android:id="@+id/activityName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:text="activity_name"
-            android:textColor="@color/white"
+            android:layout_marginStart="20dp"
+            android:text="@string/activity_name"
             android:textSize="25sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />-->
-
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/btnBack"
+            tools:layout_editor_absoluteY="20dp"
+            tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
