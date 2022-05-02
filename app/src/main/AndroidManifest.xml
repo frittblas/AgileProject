@@ -13,7 +13,7 @@
         android:theme="@style/Theme.AgileProject">
         <activity
             android:name=".SelectProgramActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
