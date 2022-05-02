@@ -1,65 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@color/Gray_3"
-tools:context=".SelectProgramActivity"
-tools:ignore="ExtraText">
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/layoutHeader"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/purple_500"
-    android:padding="15dp"
-    app:layout_constraintBaseline_toTopOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".SelectProgramActivity">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnBack"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/ic_baseline_arrow_back_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/activityName"
+    <ListView
+        android:id="@+id/listview"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="@string/activity_name"
-        android:textSize="25sp"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/btnBack"
-        tools:layout_editor_absoluteY="20dp"
-        tools:ignore="MissingConstraints" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-
-<com.google.android.material.bottomnavigation.BottomNavigationView
-    android:id="@+id/bottomNavigation"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:backgroundTint="@color/white"
-    app:itemIconSize="30dp"
-    app:labelVisibilityMode="unlabeled"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:menu="@menu/navigation_menu" />
-
-<View
-    android:id="@+id/viewDivider"
-    android:layout_width="match_parent"
-    android:layout_height="1dp"
-    android:background="@color/white"
-    app:layout_constraintBottom_toTopOf="@id/bottomNavigation"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="wrap_content" />
+</RelativeLayout>
