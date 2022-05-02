@@ -18,6 +18,8 @@ import java.util.List;
 
 public class SelectProgramActivity extends AppCompatActivity {
 
+    String currentUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +43,6 @@ public class SelectProgramActivity extends AppCompatActivity {
         });
         
         Intent myIntent = getIntent();
-        String username = myIntent.getStringExtra("username");
+        currentUser = myIntent.getStringExtra("username");
     }
 }

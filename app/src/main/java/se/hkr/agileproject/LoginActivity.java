@@ -17,17 +17,44 @@ import com.android.volley.toolbox.Volley;
 
 public class LoginActivity extends AppCompatActivity {
 
+    String currentUser;
+
+    enum toActivity {
+        HOME,
+        REGISTER
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
     }
 
-    public void switchActivity(String name) {
+    public void switchActivity(toActivity to) {
 
-        Intent myIntent = new Intent(this, HomeActivity.class);
-        myIntent.putExtra("username", name);
-        startActivity(myIntent);
+        Intent myIntent = null;
+
+        switch(to) {
+
+            case HOME :
+                myIntent = new Intent(this, HomeActivity.class);
+                break;
+            case REGISTER :
+                myIntent = new Intent(this, RegisterActivity.class);
+                break;
+
+        }
+
+        if(myIntent != null) {
+            myIntent.putExtra("username", currentUser);
+            startActivity(myIntent);
+        }
+
+    }
+
+    public void onClickNewUser(View v) {
+
+        switchActivity(toActivity.REGISTER);
 
     }
 
@@ -62,8 +89,9 @@ public class LoginActivity extends AppCompatActivity {
                         if(response.compareTo(username) == 0) {
                             // show a short little success msg (toast)
                             Toast.makeText(getApplicationContext(), "Logged in " + response, Toast.LENGTH_SHORT).show();
-                            // switch activity to the start screen
-                            switchActivity(username);
+                            // set currentUser to username and switch activity to the home screen
+                            currentUser = response;
+                            switchActivity(toActivity.HOME);
                         }
                         else {
                             // show a short little error msg
