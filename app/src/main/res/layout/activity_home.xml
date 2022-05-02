@@ -116,6 +116,7 @@
                 android:background="@drawable/button_white_home_screen"
                 android:clickable="false"
                 android:gravity="center"
+                android:onClick="onClickSelectProgram"
                 android:orientation="vertical"
                 android:padding="15dp"
                 app:layout_constraintDimensionRatio="H,1:1"
