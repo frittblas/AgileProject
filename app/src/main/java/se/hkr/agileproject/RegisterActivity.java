@@ -43,13 +43,13 @@ public class RegisterActivity extends AppCompatActivity {
         String str_password  = password.getText().toString();
 
         Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
-        Matcher matchusername = p.matcher(str_user_name);
-        Matcher matchpassword = p.matcher(str_password);
-        boolean specialCharactersUsername = matchusername.find();
-        boolean specialCharactersPassword = matchpassword.find();
+        Matcher matchUsername = p.matcher(str_user_name);
+        Matcher matchPassword = p.matcher(str_password);
+        boolean specialCharactersUsername = matchUsername.find();
+        boolean specialCharactersPassword = matchPassword.find();
         boolean minimumCharacters = (str_user_name.length() >= 4 && str_password.length() >= 4);
 
-        if(specialCharactersUsername == false && specialCharactersPassword == false && minimumCharacters){
+        if(!specialCharactersUsername && !specialCharactersPassword && minimumCharacters){
             registerUser(str_user_name, enc.generateSecurePassword(str_password));
         } else{
             Toast.makeText(getApplicationContext(), "Error: Use characters A-Z or numbers 0-9", Toast.LENGTH_SHORT).show();
