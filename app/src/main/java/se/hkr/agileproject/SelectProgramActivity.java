@@ -30,11 +30,13 @@ public class SelectProgramActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_program);
-
-        // test array before we collect data with responseListener
-        // String[] programs = new String[]{"Beginner", "Push", "Pull", "Legs"};
-        // List<String> programList = new ArrayList<String>(Arrays.asList(programs));
         getPrograms();
+
+        Intent myIntent = getIntent();
+        currentUser = myIntent.getStringExtra("username");
+    }
+
+    public void populateList() {
         ListView listView = (ListView) findViewById(R.id.listview);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
@@ -48,9 +50,6 @@ public class SelectProgramActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "You choose: " + selectedItem, Toast.LENGTH_SHORT).show();
             }
         });
-
-        Intent myIntent = getIntent();
-        currentUser = myIntent.getStringExtra("username");
     }
 
     public void getPrograms() {
@@ -62,13 +61,9 @@ public class SelectProgramActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // check if the response is good
-                        if (response.equals("no programs")) {
-                            // show a short little error msg
-                            Toast.makeText(getApplicationContext(), "Error: " + response, Toast.LENGTH_SHORT).show();
-                        } else {
-                            programList = Arrays.asList(response.split(" "));
-                        }
+                        programList = Arrays.asList(response.split(";"));
+                        populateList();
+                        Toast.makeText(getApplicationContext(), "Message: " + programList.get(0), Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -76,5 +71,6 @@ public class SelectProgramActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Something went wrong!", Toast.LENGTH_SHORT).show();
             }
         });
+        queue.add(stringRequest);
     }
 }
