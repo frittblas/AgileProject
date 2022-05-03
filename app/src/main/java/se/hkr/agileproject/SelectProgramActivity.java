@@ -47,7 +47,7 @@ public class SelectProgramActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItem = (String) parent.getItemAtPosition(position);
-                Toast.makeText(getApplicationContext(), "You choose: " + selectedItem, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "You selected: " + selectedItem, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -63,7 +63,6 @@ public class SelectProgramActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         programList = Arrays.asList(response.split(";"));
                         populateList();
-                        Toast.makeText(getApplicationContext(), "Message: " + programList.get(0), Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
             @Override
