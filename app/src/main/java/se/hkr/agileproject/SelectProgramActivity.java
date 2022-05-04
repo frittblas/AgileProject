@@ -39,8 +39,9 @@ public class SelectProgramActivity extends AppCompatActivity {
     public void populateList() {
         ListView listView = (ListView) findViewById(R.id.listview);
 
+        // Using androids template = (this, android.R.layout.selectable_list, programList);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
-                (this, android.R.layout.simple_list_item_1, programList);
+                (this, R.layout.selectable_list, programList);
         listView.setAdapter(arrayAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
