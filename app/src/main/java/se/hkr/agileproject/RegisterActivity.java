@@ -52,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
         if(!specialCharactersUsername && !specialCharactersPassword && minimumCharacters){
             registerUser(str_user_name, enc.generateSecurePassword(str_password));
         } else{
-            Toast.makeText(getApplicationContext(), "Error: Use characters A-Z or numbers 0-9", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Error: Use min 4 characters. A-Z and 0-9", Toast.LENGTH_SHORT).show();
         }
     }
 
