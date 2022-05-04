@@ -28,10 +28,9 @@ public class SelectProgramActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getProgramsAsync();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_program);
-        getPrograms();
-
         Intent myIntent = getIntent();
         currentUser = myIntent.getStringExtra("username");
     }
@@ -53,7 +52,7 @@ public class SelectProgramActivity extends AppCompatActivity {
         });
     }
 
-    public void getPrograms() {
+    public void getProgramsAsync() {
 
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "https://frittblas.se/agileproject/getprograms.php";
