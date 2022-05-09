@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -33,6 +35,10 @@ public class SelectProgramActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select_program);
         Intent myIntent = getIntent();
         currentUser = myIntent.getStringExtra("username");
+    }
+
+    public void onClickBack(View v) {
+        finish();
     }
 
     public void populateList() {
