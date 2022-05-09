@@ -26,9 +26,13 @@
         <entry key="..\:/Users/Marcus/Desktop/iHasTrained/AgileProject/app/src/main/res/menu/navigation_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/fwett/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_selectable_list_item.xml" value="0.17777777777777778" />
         <entry key="..\:/Users/fwett/OneDrive/Skrivbord/Agilt/AgileProject/app/src/main/res/layout/activity_home.xml" value="0.32407407407407407" />
+        <entry key="..\:/Users/fwett/OneDrive/Skrivbord/Agilt/AgileProject/app/src/main/res/layout/activity_login.xml" value="0.2140625" />
+        <entry key="..\:/Users/fwett/OneDrive/Skrivbord/Agilt/AgileProject/app/src/main/res/layout/activity_login_old.xml" value="0.2140625" />
         <entry key="..\:/Users/fwett/OneDrive/Skrivbord/Agilt/AgileProject/app/src/main/res/layout/activity_main.xml" value="0.32407407407407407" />
+        <entry key="..\:/Users/fwett/OneDrive/Skrivbord/Agilt/AgileProject/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Users/fwett/OneDrive/Skrivbord/Agilt/AgileProject/app/src/main/res/layout/activity_select_program.xml" value="0.32407407407407407" />
-        <entry key="..\:/Users/fwett/OneDrive/Skrivbord/Agilt/AgileProject/app/src/main/res/layout/selectable_list.xml" value="0.17777777777777778" />
+        <entry key="..\:/Users/fwett/OneDrive/Skrivbord/Agilt/AgileProject/app/src/main/res/layout/activity_start_screen.xml" value="0.3489583333333333" />
+        <entry key="..\:/Users/fwett/OneDrive/Skrivbord/Agilt/AgileProject/app/src/main/res/layout/selectable_list.xml" value="0.33" />
         <entry key="..\:/Users/fwett/OneDrive/Skrivbord/Agilt/AgileProject/app/src/main/res/layout/template_activity.xml" value="0.33" />
         <entry key="..\:/Users/robin/OneDrive/Documents/Skola/AgileDevelopment/Projekt/AgileProject/app/src/main/res/drawable/image_background_start_screen.xml" value="0.1135" />
         <entry key="..\:/Users/robin/OneDrive/Documents/Skola/AgileDevelopment/Projekt/AgileProject/app/src/main/res/drawable/image_header_background.xml" value="0.1705" />
