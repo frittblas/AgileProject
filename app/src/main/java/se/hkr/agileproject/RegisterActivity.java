@@ -26,6 +26,10 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
     }
 
+    public void onClickBack(View v) {
+        finish();
+    }
+
     public void switchActivity(String name) {
 
         Intent myIntent = new Intent(this, HomeActivity.class);
