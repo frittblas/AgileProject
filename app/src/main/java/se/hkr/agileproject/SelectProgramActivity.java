@@ -37,6 +37,15 @@ public class SelectProgramActivity extends AppCompatActivity {
         currentUser = myIntent.getStringExtra("username");
     }
 
+    public void switchActivity(String name, String selectedProgram) {
+
+        Intent myIntent = new Intent(this, ShowProgramActivity.class);
+        myIntent.putExtra("username", name);
+        myIntent.putExtra("program", selectedProgram);
+        startActivity(myIntent);
+
+    }
+
     public void onClickBack(View v) {
         finish();
     }
@@ -53,6 +62,7 @@ public class SelectProgramActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItem = (String) parent.getItemAtPosition(position);
+                switchActivity(currentUser, selectedItem);
                 Toast.makeText(getApplicationContext(), "You selected: " + selectedItem, Toast.LENGTH_SHORT).show();
             }
         });
