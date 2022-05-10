@@ -7,7 +7,8 @@ import android.widget.TextView;
 
 // Holds the content of a row for the CustomListAdapter
 public class CustomListViewHolder {
-    TextView exerciseName ;
+    TextView exerciseName;
+    TextView setsReps;
     ImageButton btnAdd;
     EditText editTextWeight;
     ImageButton btnSubtract;

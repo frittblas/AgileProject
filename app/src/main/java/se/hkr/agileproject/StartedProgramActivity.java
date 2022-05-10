@@ -42,7 +42,7 @@ public class StartedProgramActivity extends AppCompatActivity {
         program.setText(selectedProgram);
 
         listView = (ListView) findViewById(R.id.customListView);
-        listAdapter = new CustomListAdapter(this,exerciseList);
+        listAdapter = new CustomListAdapter(this,exerciseList, setsRepsList);
         listView.setAdapter(listAdapter);
         btnFinished = (Button) findViewById(R.id.btnFinish);
     }
