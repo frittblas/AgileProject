@@ -48,12 +48,17 @@ public class ShowProgramActivity extends AppCompatActivity {
 
     public void switchActivity(String name, String selectedProgram,
                                List<String> repsSetsList, List<String> exerciseList) {
-        Intent myIntent = new Intent(this, WallActivity.class);
+        Intent myIntent = new Intent(this, StartedProgramActivity.class);
         myIntent.putExtra("username", name);
         myIntent.putExtra("program", selectedProgram);
-        myIntent.putStringArrayListExtra("repsSetsList", (ArrayList<String>) repsSetsList);
-        myIntent.putStringArrayListExtra("exerciseList", (ArrayList<String>) exerciseList);
+        myIntent.putStringArrayListExtra("repssets", (ArrayList<String>) repsSetsList);
+        myIntent.putStringArrayListExtra("exercises", (ArrayList<String>) exerciseList);
         startActivity(myIntent);
+    }
+
+    public void onClickStartWorkout(View v) {
+        switchActivity(currentUser, selectedProgram,
+                getSetsRepsList(dataList), getExerciseList(dataList));
     }
 
     public void onClickBack(View v) {
@@ -61,14 +66,14 @@ public class ShowProgramActivity extends AppCompatActivity {
     }
 
     // create separate reps and sets list from dataList
-    public static List<String> getRepsSetsList(List<String> data) {
-        List<String> repsSetsList = new ArrayList<>();
+    public static List<String> getSetsRepsList(List<String> data) {
+        List<String> setsRepsList = new ArrayList<>();
         char x = 'x';
         for (int i = 0; i < data.size(); i = i + 3) {
             String rs = data.get(i + 1)  + x + data.get(i + 2);
-            repsSetsList.add(rs);
+            setsRepsList.add(rs);
         }
-        return repsSetsList;
+        return setsRepsList;
     }
 
     // create separate exercise list from dataList
@@ -85,7 +90,7 @@ public class ShowProgramActivity extends AppCompatActivity {
 
         // Using androids template = (this, android.R.layout.selectable_list, programList);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
-                (this, android.R.layout.simple_list_item_1, exerciseList);
+                (this, R.layout.selectable_list, exerciseList);
         listView.setAdapter(arrayAdapter);
     }
 
