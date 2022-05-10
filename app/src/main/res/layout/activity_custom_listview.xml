@@ -21,14 +21,15 @@
         android:id="@+id/btnAdd"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="10dp"
         android:adjustViewBounds="true"
         android:background="#00ffffff"
-        android:src="@drawable/ic_baseline_plus_one_24"
+        android:src="@drawable/icon_add"
         app:layout_constraintEnd_toStartOf="@+id/editTextWeight"
         app:layout_constraintStart_toEndOf="@id/exerciseName"
         tools:layout_editor_absoluteY="0dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        app:tint="@color/Gray_4" />
 
     <EditText
         android:id="@+id/editTextWeight"
@@ -38,19 +39,33 @@
         android:layout_marginStart="10dp"
         android:text="@string/_0"
         android:inputType="number"
+        android:gravity="right"
+
         app:layout_constraintStart_toEndOf="@+id/btnAdd"
         tools:ignore="MissingConstraints" />
 
+
+    <TextView
+        android:id="@+id/kilogramText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="kg"
+        android:layout_marginTop="14dp"
+        android:textSize="15sp"
+        android:textColor="@color/Gray_5"
+        app:layout_constraintStart_toEndOf="@id/editTextWeight"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/btnSubtract"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="5dp"
         android:background="#00ffffff"
-        android:src="@drawable/ic_baseline_indeterminate_check_box_24"
-        app:layout_constraintStart_toEndOf="@+id/editTextWeight"
-        tools:ignore="MissingConstraints" />
+        android:src="@drawable/icon_subtract"
+        app:layout_constraintStart_toEndOf="@+id/kilogramText"
+        tools:ignore="MissingConstraints"
+        app:tint="@color/Gray_4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
