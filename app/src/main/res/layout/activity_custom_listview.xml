@@ -27,9 +27,9 @@
         android:src="@drawable/icon_add"
         app:layout_constraintEnd_toStartOf="@+id/editTextWeight"
         app:layout_constraintStart_toEndOf="@id/exerciseName"
-        tools:layout_editor_absoluteY="0dp"
+        app:tint="@color/Gray_4"
         tools:ignore="MissingConstraints"
-        app:tint="@color/Gray_4" />
+        tools:layout_editor_absoluteY="0dp" />
 
     <EditText
         android:id="@+id/editTextWeight"
@@ -63,9 +63,10 @@
         android:layout_marginStart="5dp"
         android:background="#00ffffff"
         android:src="@drawable/icon_subtract"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/kilogramText"
-        tools:ignore="MissingConstraints"
-        app:tint="@color/Gray_4" />
+        app:tint="@color/Gray_4"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

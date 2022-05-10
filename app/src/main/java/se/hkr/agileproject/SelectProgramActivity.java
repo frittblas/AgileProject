@@ -61,7 +61,6 @@ public class SelectProgramActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItem = (String) parent.getItemAtPosition(position);
                 switchActivity(currentUser, selectedItem);
-                Toast.makeText(getApplicationContext(), "You selected: " + selectedItem, Toast.LENGTH_SHORT).show();
             }
         });
     }

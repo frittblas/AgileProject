@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Gray_2"
+    android:background="@color/Gray_3"
     tools:context=".SelectProgramActivity"
     tools:ignore="ExtraText">
 
@@ -54,7 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="84dp"
-        android:background="@color/Gray_2"
+        android:background="@color/Gray_3"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="@+id/layoutHeader"
@@ -68,7 +68,7 @@
             android:id="@+id/listview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/Gray_2" />
+            android:background="@color/Gray_3" />
     </RelativeLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
