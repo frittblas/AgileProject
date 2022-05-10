@@ -31,7 +31,7 @@ public class StartedProgramActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.customListView);
         listAdapter = new CustomListAdapter(this,exercises);
         listView.setAdapter(listAdapter);
-        btnFinished = (Button) findViewById(R.id.btnFinished);
+        btnFinished = (Button) findViewById(R.id.btnFinish);
     }
 
     // REMOVE THIS! PLACEHOLDER!
