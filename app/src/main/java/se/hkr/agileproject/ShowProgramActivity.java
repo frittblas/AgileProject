@@ -35,40 +35,25 @@ public class ShowProgramActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //getExercisesAsync();
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_program);
-
         Intent myIntent = getIntent();
         currentUser = myIntent.getStringExtra("username");
         selectedProgram = myIntent.getStringExtra("program");
+        getExercisesAsync();
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_show_program);
+
         TextView program = (TextView) findViewById(R.id.activityName);
         program.setText(selectedProgram);
+    }
 
-        // testvalues
-        dataList.add("Benchpress");
-        dataList.add("3");
-        dataList.add("12");
-        dataList.add("Squat");
-        dataList.add("3");
-        dataList.add("10");
-        dataList.add("Deadlift");
-        dataList.add("3");
-        dataList.add("8");
-        dataList.add("Overhead Press");
-        dataList.add("3");
-        dataList.add("12");
-        dataList.add("Chins");
-        dataList.add("3");
-        dataList.add("10");
-        dataList.add("Barbell row");
-        dataList.add("3");
-        dataList.add("8");
-
-        // move this to onResponse when php scripts is ready
-        List<String> repsSetsList = repsSetsList(dataList);
-        List<String> exerciseList = getExerciseList(dataList);
-        populateList(exerciseList);
+    public void switchActivity(String name, String selectedProgram,
+                               List<String> repsSetsList, List<String> exerciseList) {
+        Intent myIntent = new Intent(this, WallActivity.class);
+        myIntent.putExtra("username", name);
+        myIntent.putExtra("program", selectedProgram);
+        myIntent.putStringArrayListExtra("repsSetsList", (ArrayList<String>) repsSetsList);
+        myIntent.putStringArrayListExtra("exerciseList", (ArrayList<String>) exerciseList);
+        startActivity(myIntent);
     }
 
     public void onClickBack(View v) {
@@ -76,7 +61,7 @@ public class ShowProgramActivity extends AppCompatActivity {
     }
 
     // create separate reps and sets list from dataList
-    public static List<String> repsSetsList(List<String> data) {
+    public static List<String> getRepsSetsList(List<String> data) {
         List<String> repsSetsList = new ArrayList<>();
         char x = 'x';
         for (int i = 0; i < data.size(); i = i + 3) {
@@ -107,13 +92,16 @@ public class ShowProgramActivity extends AppCompatActivity {
     public void getExercisesAsync() {
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "https://frittblas.se/agileproject/getprograms.php";
+        String url = "https://frittblas.se/agileproject/getexercises.php" +
+                "?programname=" + selectedProgram;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         dataList = Arrays.asList(response.split(";"));
+                        List<String> exerciseList = getExerciseList(dataList);
+                        populateList(exerciseList);
                     }
                 }, new Response.ErrorListener() {
             @Override

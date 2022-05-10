@@ -38,12 +38,10 @@ public class SelectProgramActivity extends AppCompatActivity {
     }
 
     public void switchActivity(String name, String selectedProgram) {
-
         Intent myIntent = new Intent(this, ShowProgramActivity.class);
         myIntent.putExtra("username", name);
         myIntent.putExtra("program", selectedProgram);
         startActivity(myIntent);
-
     }
 
     public void onClickBack(View v) {
