@@ -15,11 +15,13 @@ import java.util.List;
 public class CustomListAdapter extends BaseAdapter {
 
     public List<String> listExercises;
+    public List<String> listSetsReps;
     private Context context;
 
-    public CustomListAdapter(Context context,List<String> listExercises) {
+    public CustomListAdapter(Context context,List<String> listExercises, List<String> listSetsReps) {
         this.context = context;
         this.listExercises = listExercises;
+        this.listSetsReps = listSetsReps;
     }
 
     @Override
@@ -51,6 +53,7 @@ public class CustomListAdapter extends BaseAdapter {
             row = layoutInflater.inflate(R.layout.activity_custom_listview,parent,false);
             listViewHolder = new CustomListViewHolder();
             listViewHolder.exerciseName = row.findViewById(R.id.exerciseName);
+            listViewHolder.setsReps = row.findViewById(R.id.setsReps);
             listViewHolder.btnAdd = row.findViewById(R.id.btnAdd);
             listViewHolder.editTextWeight = row.findViewById(R.id.editTextWeight);
             listViewHolder.btnSubtract = row.findViewById(R.id.btnSubtract);
@@ -61,9 +64,9 @@ public class CustomListAdapter extends BaseAdapter {
             row=convertView;
             listViewHolder= (CustomListViewHolder) row.getTag();
         }
-        final String exercise = getItem(position);
 
-        listViewHolder.exerciseName.setText(exercise);
+        listViewHolder.exerciseName.setText(listExercises.get(position));
+        listViewHolder.setsReps.setText(listSetsReps.get(position));
 
         // Adds functionality to the add button
         listViewHolder.btnAdd.setOnClickListener(new View.OnClickListener() {
