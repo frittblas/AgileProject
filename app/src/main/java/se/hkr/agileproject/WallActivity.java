@@ -60,7 +60,8 @@ public class WallActivity extends AppCompatActivity {
             message.setText("");
             getWallPostsAsync();
         } else {
-            Toast.makeText(getApplicationContext(), "You need to write something", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Updated!", Toast.LENGTH_SHORT).show();
+            getWallPostsAsync();
         }
 
     }
