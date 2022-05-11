@@ -43,20 +43,10 @@ public class WallActivity extends AppCompatActivity {
 
     }
 
-    public void populateList() {
+    public void populateList(List<String> messageTextList, List<String> nameDateList) {
         ListView listView = (ListView) findViewById(R.id.customListViewWall);
-
-        // Using androids template = (this, android.R.layout.selectable_list, programList);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
-                (this, R.layout.selectable_list, messageList);
-        listView.setAdapter(arrayAdapter);
-    }
-
-    public void populateList(List<String> exerciseList, List<String> setRepsList) {
-        ListView listView = (ListView) findViewById(R.id.customListViewWall);
-        WallAdapter wallAdapter = new WallAdapter(this, exerciseList,setRepsList);
+        WallAdapter wallAdapter = new WallAdapter(this, messageTextList, nameDateList);
         listView.setAdapter(wallAdapter);
-        //btnStart = (Button) findViewById(R.id.btnStart);
     }
 
     public void onClickPostWall(View v){
@@ -103,22 +93,14 @@ public class WallActivity extends AppCompatActivity {
 
                         List<String> posterName = new ArrayList<>();
                         List<String> messageText = new ArrayList<>();
-                        List<String> postDate = new ArrayList<>();
 
                         messageList = Arrays.asList(response.split(";"));
 
                         for (int i = 0; i < messageList.size(); i += 3) {
-                            posterName.add(messageList.get(i));
+                            posterName.add(messageList.get(i) + "  " + messageList.get(i + 2));
                         }
                         for (int i = 1; i < messageList.size(); i += 3) {
                             messageText.add(messageList.get(i));
-                        }
-                        for (int i = 2; i < messageList.size(); i += 3) {
-                            postDate.add(messageList.get(i));
-                        }
-
-                        for (int i = 0; i < posterName.size(); i++) {
-                            //posterName.get(i)
                         }
 
                         populateList(messageText, posterName);
