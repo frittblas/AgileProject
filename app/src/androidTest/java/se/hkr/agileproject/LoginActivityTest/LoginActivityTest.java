@@ -1,4 +1,4 @@
-package se.hkr.agileproject;
+package se.hkr.agileproject.LoginActivityTest;
 
 
 import static androidx.test.espresso.Espresso.onView;
@@ -18,21 +18,26 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 
 import androidx.test.espresso.ViewInteraction;
+import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.IsInstanceOf;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import se.hkr.agileproject.MainActivity;
+import se.hkr.agileproject.R;
+
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class MainActivityTest {
+public class LoginActivityTest {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
@@ -40,7 +45,7 @@ public class MainActivityTest {
     @Test
     public void mainActivityTest() {
         ViewInteraction appCompatEditText = onView(
-                allOf(withId(R.id.username),
+                Matchers.allOf(ViewMatchers.withId(R.id.username),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
