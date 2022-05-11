@@ -50,13 +50,15 @@ public class WallActivity extends AppCompatActivity {
     }
 
     public void onClickPostWall(View v){
-        //Raden under får justeras sen för att hämta message från textrutan i GUI
-        //EditText message = findViewById(R.id.message);
 
-        String str_message = "Test string"; // ändras sedan till message.getText().toString();
+        EditText message = findViewById(R.id.editTextWall);
+
+        String str_message = message.getText().toString();
 
         if (!(str_message.length() == 0)){
             createWallPost(currentUser, str_message);
+            message.setText("");
+            getWallPostsAsync();
         } else {
             Toast.makeText(getApplicationContext(), "You need to write something", Toast.LENGTH_SHORT).show();
         }
