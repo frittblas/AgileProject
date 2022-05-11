@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AgileProject">
         <activity
+            android:name=".WallActivity"
+            android:exported="false" />
+        <activity
             android:name=".StartedProgramActivity"
             android:exported="true" />
         <activity

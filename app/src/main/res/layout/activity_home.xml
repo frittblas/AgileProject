@@ -218,6 +218,7 @@
                 android:layout_marginTop="22dp"
                 android:background="@drawable/button_white_home_screen"
                 android:gravity="center"
+                android:onClick="onClickWall"
                 android:orientation="vertical"
                 android:padding="15dp"
                 app:layout_constraintDimensionRatio="H,1:1"
@@ -231,7 +232,7 @@
                     android:layout_margin="8dp"
                     android:contentDescription="@string/app_name"
                     android:padding="8dp"
-                    android:src="@drawable/image_wall"/>
+                    android:src="@drawable/image_wall" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -240,7 +241,7 @@
                     android:text="@string/the_wall"
                     android:textColor="@color/black"
                     android:textSize="20sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
