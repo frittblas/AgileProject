@@ -11,24 +11,24 @@ import java.util.List;
 
 public class ShowProgramAdapter extends BaseAdapter {
 
-    public List<String> exerciseList;
-    public List<String> setsRepsList;
+    public List<String> listExercises;
+    public List<String> listSetsReps;
     private Context context;
 
-    public ShowProgramAdapter(Context context, List<String> exerciseList, List<String> setsRepsList) {
+    public ShowProgramAdapter(Context context, List<String> listExercises, List<String> listSetsReps) {
         this.context = context;
-        this.exerciseList = exerciseList;
-        this.setsRepsList = setsRepsList;
+        this.listExercises = listExercises;
+        this.listSetsReps = listSetsReps;
     }
 
     @Override
     public int getCount() {
-        return exerciseList.size();
+        return listExercises.size();
     }
 
     @Override
-    public Object getItem(int i) {
-        return exerciseList.get(i);
+    public String getItem(int position) {
+        return listExercises.get(position);
     }
 
     @Override
@@ -46,10 +46,10 @@ public class ShowProgramAdapter extends BaseAdapter {
         if(convertView == null)
         {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            row = layoutInflater.inflate(R.layout.activity_select_program,parent,false);
+            row = layoutInflater.inflate(R.layout.activity_custom_show_program_listview,parent,false);
             listViewHolder = new ShowProgramViewHolder();
-            listViewHolder.exerciseName = row.findViewById(R.id.exerciseName);
-            listViewHolder.setsReps = row.findViewById(R.id.setsReps);
+            listViewHolder.exerciseName = row.findViewById(R.id.exerciseNameShowProgram);
+            listViewHolder.setsReps = row.findViewById(R.id.setsRepsShowProgram);
             row.setTag(listViewHolder);
         }
         else
@@ -58,8 +58,8 @@ public class ShowProgramAdapter extends BaseAdapter {
             listViewHolder= (ShowProgramViewHolder) row.getTag();
         }
 
-        listViewHolder.exerciseName.setText(exerciseList.get(position));
-        listViewHolder.setsReps.setText(setsRepsList.get(position));
+        listViewHolder.exerciseName.setText(listExercises.get(position));
+        listViewHolder.setsReps.setText(listSetsReps.get(position));
 
         return row;
     }

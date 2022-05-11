@@ -46,28 +46,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!--In Relativelayout we change bgcolor-->
-    <RelativeLayout
-        android:id="@+id/rl"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="84dp"
-        android:background="@color/Gray_3"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/layoutHeader"
-        tools:context=".ShowProgramActivity"
-        tools:ignore="RedundantNamespace"
-        tools:layout_editor_absoluteX="0dp">
-
-        <!--In Listview we change bgcolor for buttons in list-->
-        <ListView
-            android:id="@+id/listview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/Gray_3" />
-    </RelativeLayout>
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
@@ -87,5 +65,17 @@
             android:onClick="onClickStartWorkout"
             android:text="Start" />
     </LinearLayout>
+
+    <ListView
+        android:id="@+id/customListViewShowProgram"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutHeader" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
