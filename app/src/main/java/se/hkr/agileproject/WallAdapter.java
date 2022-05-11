@@ -43,24 +43,24 @@ public class WallAdapter extends BaseAdapter {
     public View getView(final int position, View convertView
             , ViewGroup parent) {
         View row;
-        final ShowProgramViewHolder listViewHolder;
+        final WallViewHolder listViewHolder;
         if(convertView == null)
         {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            row = layoutInflater.inflate(R.layout.activity_custom_show_program_listview,parent,false);
-            listViewHolder = new ShowProgramViewHolder();
-            listViewHolder.exerciseName = row.findViewById(R.id.exerciseNameShowProgram);
-            listViewHolder.setsReps = row.findViewById(R.id.setsRepsShowProgram);
+            row = layoutInflater.inflate(R.layout.activity_custom_wall_listview,parent,false);
+            listViewHolder = new WallViewHolder();
+            listViewHolder.messageText = row.findViewById(R.id.messageWall);
+            listViewHolder.posterName = row.findViewById(R.id.nameDateWall);
             row.setTag(listViewHolder);
         }
         else
         {
             row=convertView;
-            listViewHolder= (ShowProgramViewHolder) row.getTag();
+            listViewHolder= (WallViewHolder) row.getTag();
         }
 
-        listViewHolder.exerciseName.setText(listMessages.get(position));
-        listViewHolder.setsReps.setText(listPosterNames.get(position));
+        listViewHolder.messageText.setText(listMessages.get(position));
+        listViewHolder.posterName.setText(listPosterNames.get(position));
 
         return row;
     }
