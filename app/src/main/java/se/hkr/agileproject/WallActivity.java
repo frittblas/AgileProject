@@ -35,7 +35,9 @@ public class WallActivity extends AppCompatActivity {
     }
 
     public void onClickBack(View v) {
+
         finish();
+
     }
 
     public void onClickPostWall(View v){
