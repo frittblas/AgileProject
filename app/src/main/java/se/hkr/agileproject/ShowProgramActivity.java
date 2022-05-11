@@ -30,9 +30,8 @@ public class ShowProgramActivity extends AppCompatActivity {
 
     String currentUser;
     String selectedProgram;
+    int userProgramCount;
     List<String> dataList = new ArrayList<>();
-    private ListView listView;
-    private ShowProgramAdapter showProgramAdapter;
     Button btnStart;
 
     @Override
@@ -43,26 +42,49 @@ public class ShowProgramActivity extends AppCompatActivity {
         getExercisesAsync();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_program);
-
-
-
         TextView program = (TextView) findViewById(R.id.activityName);
         program.setText(selectedProgram);
     }
 
-    public void switchActivity(String name, String selectedProgram,
-                               List<String> repsSetsList, List<String> exerciseList) {
+    public void switchActivity(List<String> repsSetsList, List<String> exerciseList) {
         Intent myIntent = new Intent(this, StartedProgramActivity.class);
-        myIntent.putExtra("username", name);
+        myIntent.putExtra("username", currentUser);
         myIntent.putExtra("program", selectedProgram);
+        myIntent.putExtra("count", userProgramCount);
         myIntent.putStringArrayListExtra("repssets", (ArrayList<String>) repsSetsList);
         myIntent.putStringArrayListExtra("exercises", (ArrayList<String>) exerciseList);
         startActivity(myIntent);
     }
 
     public void onClickStartWorkout(View v) {
-        switchActivity(currentUser, selectedProgram,
-                getSetsRepsList(dataList), getExerciseList(dataList));
+        createUserProgram(currentUser, selectedProgram);
+    }
+
+    public void createUserProgram(String username, String program) {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="https://frittblas.se/agileproject/createuserprogram.php" +
+                "?username=" + username + "&program_name=" + program;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // check if the response is good
+                        if(response.equals("error")) {
+                            Toast.makeText(getApplicationContext(), "Error: " + response, Toast.LENGTH_SHORT).show();
+                        } else {
+                            userProgramCount = Integer.parseInt(response);
+                            switchActivity(getSetsRepsList(dataList), getExerciseList(dataList));
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        queue.add(stringRequest);
     }
 
     public void onClickBack(View v) {
@@ -90,8 +112,8 @@ public class ShowProgramActivity extends AppCompatActivity {
     }
 
     public void populateList(List<String> exerciseList, List<String> setRepsList) {
-        listView = (ListView) findViewById(R.id.customListViewShowProgram);
-        showProgramAdapter = new ShowProgramAdapter(this,exerciseList,setRepsList);
+        ListView listView = (ListView) findViewById(R.id.customListViewShowProgram);
+        ShowProgramAdapter showProgramAdapter = new ShowProgramAdapter(this, exerciseList, setRepsList);
         listView.setAdapter(showProgramAdapter);
         btnStart = (Button) findViewById(R.id.btnStart);
     }

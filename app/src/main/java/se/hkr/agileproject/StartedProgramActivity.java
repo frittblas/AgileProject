@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +21,7 @@ public class StartedProgramActivity extends AppCompatActivity {
 
     String currentUser;
     String selectedProgram;
+    int userProgramCount;
     List<String> exerciseList = new ArrayList<>();
     List<String> setsRepsList = new ArrayList<>();
     private ListView listView;
@@ -35,9 +37,9 @@ public class StartedProgramActivity extends AppCompatActivity {
         Intent myIntent = getIntent();
         currentUser = myIntent.getStringExtra("username");
         selectedProgram = myIntent.getStringExtra("program");
+        userProgramCount = myIntent.getIntExtra("count", -1);
         setsRepsList = myIntent.getStringArrayListExtra("repssets");
         exerciseList = myIntent.getStringArrayListExtra("exercises");
-
         TextView program = (TextView) findViewById(R.id.activityName);
         program.setText(selectedProgram);
 
