@@ -3,7 +3,10 @@ package se.hkr.agileproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +41,12 @@ public class WallActivity extends AppCompatActivity {
 
         finish();
 
+    }
+
+    public void populateList(List<String> messageTextList, List<String> nameDateList) {
+        ListView listView = (ListView) findViewById(R.id.customListViewWall);
+        WallAdapter wallAdapter = new WallAdapter(this, messageTextList, nameDateList);
+        listView.setAdapter(wallAdapter);
     }
 
     public void onClickPostWall(View v){
@@ -81,7 +90,20 @@ public class WallActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
+                        List<String> posterName = new ArrayList<>();
+                        List<String> messageText = new ArrayList<>();
+
                         messageList = Arrays.asList(response.split(";"));
+
+                        for (int i = 0; i < messageList.size(); i += 3) {
+                            posterName.add(messageList.get(i) + "  " + messageList.get(i + 2));
+                        }
+                        for (int i = 1; i < messageList.size(); i += 3) {
+                            messageText.add(messageList.get(i));
+                        }
+
+                        populateList(messageText, posterName);
                     }
                 }, new Response.ErrorListener() {
             @Override

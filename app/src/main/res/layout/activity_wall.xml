@@ -68,7 +68,7 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/customListViewShowProgram"
+        android:id="@+id/customListViewWall"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginLeft="8dp"
