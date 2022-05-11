@@ -13,7 +13,7 @@ public class HomeActivity extends AppCompatActivity {
 
     enum toActivity {
         SELECT_PROGRAM,
-        SOMETHING_ELSE // change this :)
+        THE_WALL
     }
 
     @Override
@@ -39,8 +39,8 @@ public class HomeActivity extends AppCompatActivity {
             case SELECT_PROGRAM :
                 myIntent = new Intent(this, SelectProgramActivity.class);
                 break;
-            case SOMETHING_ELSE :
-                // add new activity here
+            case THE_WALL :
+                myIntent = new Intent(this, WallActivity.class);
                 break;
 
         }
@@ -53,9 +53,11 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void onClickSelectProgram(View v) {
-
         switchActivity(toActivity.SELECT_PROGRAM);
+    }
 
+    public void onClickWall(View v) {
+        switchActivity(toActivity.THE_WALL);
     }
 
 }

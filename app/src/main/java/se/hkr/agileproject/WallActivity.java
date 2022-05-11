@@ -28,9 +28,14 @@ public class WallActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_wall);
         Intent myIntent = getIntent();
         currentUser = myIntent.getStringExtra("username");
         getWallPostsAsync();
+    }
+
+    public void onClickBack(View v) {
+        finish();
     }
 
     public void onClickPostWall(View v){
