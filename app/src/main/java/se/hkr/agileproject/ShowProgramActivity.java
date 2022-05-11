@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,13 +26,14 @@ import java.util.List;
 public class ShowProgramActivity extends AppCompatActivity {
 
     // Kvar att göra:
-    // Lös så du kan skicka in 2 listor i arrayadaptern
     // Ändra så de knapparna ej blir fjädrande
-    // Lägg till en start workout knapp
 
     String currentUser;
     String selectedProgram;
     List<String> dataList = new ArrayList<>();
+    private ListView listView;
+    private ShowProgramAdapter showProgramAdapter;
+    Button btnStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,8 @@ public class ShowProgramActivity extends AppCompatActivity {
         getExercisesAsync();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_program);
+
+
 
         TextView program = (TextView) findViewById(R.id.activityName);
         program.setText(selectedProgram);
@@ -85,13 +89,11 @@ public class ShowProgramActivity extends AppCompatActivity {
         return exerciseList;
     }
 
-    public void populateList(List<String> exerciseList) {
-        ListView listView = (ListView) findViewById(R.id.listview);
-
-        // Using androids template = (this, android.R.layout.selectable_list, programList);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
-                (this, R.layout.selectable_list, exerciseList);
-        listView.setAdapter(arrayAdapter);
+    public void populateList(List<String> exerciseList, List<String> setRepsList) {
+        listView = (ListView) findViewById(R.id.customListViewShowProgram);
+        showProgramAdapter = new ShowProgramAdapter(this,exerciseList,setRepsList);
+        listView.setAdapter(showProgramAdapter);
+        btnStart = (Button) findViewById(R.id.btnStart);
     }
 
     public void getExercisesAsync() {
@@ -106,7 +108,8 @@ public class ShowProgramActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         dataList = Arrays.asList(response.split(";"));
                         List<String> exerciseList = getExerciseList(dataList);
-                        populateList(exerciseList);
+                        List<String> setRepsList = getSetsRepsList(dataList);
+                        populateList(exerciseList, setRepsList);
                     }
                 }, new Response.ErrorListener() {
             @Override
