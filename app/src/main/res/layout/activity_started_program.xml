@@ -60,11 +60,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
+
         <Button
+            android:id="@+id/btnFinish"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="finishWorkout"
             android:text="Finish"
-            android:id="@+id/btnFinish"
             android:textColor="@color/white" />
     </LinearLayout>
 
