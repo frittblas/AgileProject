@@ -19,6 +19,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class StartedProgramActivity extends AppCompatActivity {
@@ -29,9 +30,7 @@ public class StartedProgramActivity extends AppCompatActivity {
     List<String> exerciseList = new ArrayList<>();
     List<String> setsRepsList = new ArrayList<>();
     List<String> weightList = new ArrayList<>();
-    private ListView listView;
-    private CustomListAdapter listAdapter;
-    Button btnFinished;
+    List<EditText> etList = CustomListAdapter.getIdArray();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +45,11 @@ public class StartedProgramActivity extends AppCompatActivity {
         exerciseList = myIntent.getStringArrayListExtra("exercises");
         TextView program = (TextView) findViewById(R.id.activityName);
         program.setText(selectedProgram);
+        //populateWeightList();
 
-        listView = (ListView) findViewById(R.id.customListView);
-        listAdapter = new CustomListAdapter(this,exerciseList, setsRepsList);
+        ListView listView = (ListView) findViewById(R.id.customListView);
+        CustomListAdapter listAdapter = new CustomListAdapter(this, exerciseList, setsRepsList);
         listView.setAdapter(listAdapter);
-        btnFinished = (Button) findViewById(R.id.btnFinish);
     }
 
     public void onClickBack(View v) {
@@ -61,7 +60,7 @@ public class StartedProgramActivity extends AppCompatActivity {
         getWeights();
         Toast.makeText(getApplicationContext(), "Workout finished.", Toast.LENGTH_SHORT).show();
         for (int i = 0; i < exerciseList.size(); i++) {
-            populateUserProgram(i);
+            postUserProgram(i);
         }
         switchActivity();
     }
@@ -73,13 +72,20 @@ public class StartedProgramActivity extends AppCompatActivity {
     }
 
     public void getWeights() {
-        List<EditText> etList = CustomListAdapter.getIdArray();
         for (EditText e: etList) {
             weightList.add(e.getText().toString());
         }
     }
 
-    public void populateUserProgram(int i) {
+    public void populateEditTexts(List<String> editTextList) {
+        int i = 0;
+        for (EditText e: etList) {
+            e.setText(editTextList.get(i));
+            i = i+1;
+        }
+    }
+
+    public void postUserProgram(int i) {
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="https://frittblas.se/agileproject/finishuserprogram.php" + "?username=" + currentUser +
                 "&userprogramcount=" + userProgramCount + "&exercise_name=" + exerciseList.get(i) + "&exercise_weight=" + weightList.get(i);
@@ -90,6 +96,31 @@ public class StartedProgramActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         if(!response.equals("success")) {
                             Toast.makeText(getApplicationContext(), "Error: " + response, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        queue.add(stringRequest);
+    }
+
+    public void populateWeightList() {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="https://frittblas.se/upload/uploads/getexerciseweight.php" +
+                "?username=" + currentUser + "&program_name=" + selectedProgram;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(!response.equals("empty")) {
+                            List<String> editTextList = Arrays.asList(response.split(";"));
+                            populateEditTexts(editTextList);
+                        } else {
+                            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {
