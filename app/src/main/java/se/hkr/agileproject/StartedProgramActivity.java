@@ -45,11 +45,11 @@ public class StartedProgramActivity extends AppCompatActivity {
         exerciseList = myIntent.getStringArrayListExtra("exercises");
         TextView program = (TextView) findViewById(R.id.activityName);
         program.setText(selectedProgram);
-        //populateWeightList();
 
         ListView listView = (ListView) findViewById(R.id.customListView);
         CustomListAdapter listAdapter = new CustomListAdapter(this, exerciseList, setsRepsList);
         listView.setAdapter(listAdapter);
+        populateWeightList();
     }
 
     public void onClickBack(View v) {
@@ -62,6 +62,7 @@ public class StartedProgramActivity extends AppCompatActivity {
         for (int i = 0; i < exerciseList.size(); i++) {
             postUserProgram(i);
         }
+        etList.clear();
         switchActivity();
     }
 
@@ -119,8 +120,6 @@ public class StartedProgramActivity extends AppCompatActivity {
                         if(!response.equals("empty")) {
                             List<String> editTextList = Arrays.asList(response.split(";"));
                             populateEditTexts(editTextList);
-                        } else {
-                            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {
