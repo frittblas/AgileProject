@@ -53,6 +53,7 @@ public class StartedProgramActivity extends AppCompatActivity {
     }
 
     public void onClickBack(View v) {
+        etList.clear();
         finish();
     }
 
