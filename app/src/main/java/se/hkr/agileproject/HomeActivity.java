@@ -86,14 +86,13 @@ public class HomeActivity extends AppCompatActivity {
 
     public void getLatestPostAsync() {
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "https://frittblas.se/agileproject/getwallposts.php";
+        String url = "https://frittblas.se/agileproject/getlatestwallpost.php";
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        messageList = Arrays.asList(response.split(";"));
-                        setLatestPost(messageList.get(1));
+                        setLatestPost(response.toString());
                     }
                 }, new Response.ErrorListener() {
             @Override
