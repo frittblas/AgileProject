@@ -11,12 +11,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import java.util.ArrayList;
 import java.util.List;
-
-
-// Att göra
-// 2. Ska spara vikt och status (finished or in progress) i databasen
 
 public class StartedProgramActivity extends AppCompatActivity {
 
@@ -25,10 +28,10 @@ public class StartedProgramActivity extends AppCompatActivity {
     int userProgramCount;
     List<String> exerciseList = new ArrayList<>();
     List<String> setsRepsList = new ArrayList<>();
+    List<String> weightList = new ArrayList<>();
     private ListView listView;
     private CustomListAdapter listAdapter;
     Button btnFinished;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,22 +54,50 @@ public class StartedProgramActivity extends AppCompatActivity {
     }
 
     public void onClickBack(View v) {
-        /*
-        int len = CustomListAdapter.getIdArray().size();
-        List<String> l = CustomListAdapter.getIdArray();
-        String total = new String();
-        for(String str : l) {
-            total += str + ", ";
-        }
-        Toast.makeText(getApplicationContext(), total, Toast.LENGTH_SHORT).show();
-*/
-        List<EditText> l = CustomListAdapter.getIdArray();
-        String total = new String();
-        for (EditText e: l) {
-            total += e.getText().toString() + ", ";
-        }
+        finish();
+    }
 
-        Toast.makeText(getApplicationContext(), total, Toast.LENGTH_SHORT).show();
-        //finish();
+    public void finishWorkout(View v) {
+        getWeights();
+        Toast.makeText(getApplicationContext(), "Workout finished.", Toast.LENGTH_SHORT).show();
+        for (int i = 0; i < exerciseList.size(); i++) {
+            populateUserProgram(i);
+        }
+        switchActivity();
+    }
+
+    public void switchActivity() {
+        Intent myIntent = new Intent(this, HomeActivity.class);
+        myIntent.putExtra("username", currentUser);
+        startActivity(myIntent);
+    }
+
+    public void getWeights() {
+        List<EditText> etList = CustomListAdapter.getIdArray();
+        for (EditText e: etList) {
+            weightList.add(e.getText().toString());
+        }
+    }
+
+    public void populateUserProgram(int i) {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="https://frittblas.se/agileproject/finishuserprogram.php" + "?username=" + currentUser +
+                "&userprogramcount=" + userProgramCount + "&exercise_name=" + exerciseList.get(i) + "&exercise_weight=" + weightList.get(i);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(!response.equals("success")) {
+                            Toast.makeText(getApplicationContext(), "Error: " + response, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        queue.add(stringRequest);
     }
 }
