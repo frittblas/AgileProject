@@ -271,6 +271,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/latestPostHome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -279,7 +280,8 @@
                     android:text="@string/i_just_ran_15_miles"
                     android:textColor="@color/white"
                     android:textSize="20sp"
-                    app:layout_constraintTop_toBottomOf="@id/textWallLatestPost"/>
+                    app:layout_constraintTop_toBottomOf="@id/textWallLatestPost"
+                    tools:layout_editor_absoluteX="20dp" />
 
 
 
