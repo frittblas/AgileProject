@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,6 +51,22 @@ public class StartedProgramActivity extends AppCompatActivity {
     }
 
     public void onClickBack(View v) {
-        finish();
+        /*
+        int len = CustomListAdapter.getIdArray().size();
+        List<String> l = CustomListAdapter.getIdArray();
+        String total = new String();
+        for(String str : l) {
+            total += str + ", ";
+        }
+        Toast.makeText(getApplicationContext(), total, Toast.LENGTH_SHORT).show();
+*/
+        List<EditText> l = CustomListAdapter.getIdArray();
+        String total = new String();
+        for (EditText e: l) {
+            total += e.getText().toString() + ", ";
+        }
+
+        Toast.makeText(getApplicationContext(), total, Toast.LENGTH_SHORT).show();
+        //finish();
     }
 }

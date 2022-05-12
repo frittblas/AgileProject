@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ public class CustomListAdapter extends BaseAdapter {
     public List<String> listExercises;
     public List<String> listSetsReps;
     private Context context;
+    static List<EditText> idArray = new ArrayList<>();
 
     public CustomListAdapter(Context context,List<String> listExercises, List<String> listSetsReps) {
         this.context = context;
@@ -58,6 +60,7 @@ public class CustomListAdapter extends BaseAdapter {
             listViewHolder.editTextWeight = row.findViewById(R.id.editTextWeight);
             listViewHolder.btnSubtract = row.findViewById(R.id.btnSubtract);
             row.setTag(listViewHolder);
+            idArray.add(listViewHolder.editTextWeight);
         }
         else
         {
@@ -103,4 +106,11 @@ public class CustomListAdapter extends BaseAdapter {
         // Sets new value in editTextWeight
         editTextWeight.setText("" + weight);
     }
+
+    public static List <EditText> getIdArray() {
+
+        return idArray;
+
+    }
+
 }
