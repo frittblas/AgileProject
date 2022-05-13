@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">iHasTrained</string>
+    <string name="app_name">getTrained</string>
     <string name="login">Login</string>
     <string name="name">Name</string>
     <string name="password">Password</string>
@@ -18,7 +18,8 @@
     <string name="latest_wall_post">Latest wall post</string>
     <string name="i_just_ran_15_miles">I just ran 15 miles!</string>
     <string name="activity_name">activity_name</string>
-    <string name="programs">Programs</string>
-    <string name="exercises">Exercises</string>
+    <string name="programs">New Program</string>
+    <string name="exercises">My Programs</string>
+    <string name="welcome_message">Welcome to getTrained</string>
     <string name="_0">0</string>
 </resources>
