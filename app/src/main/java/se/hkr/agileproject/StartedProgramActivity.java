@@ -30,7 +30,6 @@ public class StartedProgramActivity extends AppCompatActivity {
     List<String> exerciseList = new ArrayList<>();
     List<String> setsRepsList = new ArrayList<>();
     List<String> weightList = new ArrayList<>();
-    List<EditText> etList = CustomListAdapter.getIdArray();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +52,7 @@ public class StartedProgramActivity extends AppCompatActivity {
     }
 
     public void onClickBack(View v) {
-        etList.clear();
+        CustomListAdapter.idArray.clear();
         finish();
     }
 
@@ -63,7 +62,7 @@ public class StartedProgramActivity extends AppCompatActivity {
         for (int i = 0; i < exerciseList.size(); i++) {
             postUserProgram(i);
         }
-        etList.clear();
+        CustomListAdapter.idArray.clear();
         switchActivity();
     }
 
@@ -74,14 +73,14 @@ public class StartedProgramActivity extends AppCompatActivity {
     }
 
     public void getWeights() {
-        for (EditText e: etList) {
+        for (EditText e: CustomListAdapter.idArray) {
             weightList.add(e.getText().toString());
         }
     }
 
     public void populateEditTexts(List<String> editTextList) {
         int i = 0;
-        for (EditText e: etList) {
+        for (EditText e: CustomListAdapter.idArray) {
             e.setText(editTextList.get(i));
             i = i+1;
         }
