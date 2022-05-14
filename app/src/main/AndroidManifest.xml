@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AgileProject">
         <activity
+            android:name=".MyExercisesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyProgramsActivity"
+            android:exported="false" />
+        <activity
             android:name=".StatisticsActivity"
             android:exported="false" />
         <activity
