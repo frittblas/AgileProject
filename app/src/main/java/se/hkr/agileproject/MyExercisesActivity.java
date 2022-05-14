@@ -24,11 +24,9 @@ import java.util.List;
 
 public class MyExercisesActivity extends AppCompatActivity {
 
-    //INTE KLART!
-
     String currentUser;
     String selectedProgram;
-    int userProgramId;
+    String userProgramId;
     List<String> dataList = new ArrayList<>();
 
     @Override
@@ -36,7 +34,7 @@ public class MyExercisesActivity extends AppCompatActivity {
         Intent myIntent = getIntent();
         currentUser = myIntent.getStringExtra("username");
         selectedProgram = myIntent.getStringExtra("program");
-        userProgramId = myIntent.getIntExtra("userprogramid", userProgramId);
+        userProgramId = myIntent.getStringExtra("userprogramid");
         getUserExercisesAsync();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_exercises);
@@ -48,44 +46,44 @@ public class MyExercisesActivity extends AppCompatActivity {
         finish();
     }
 
-    // create separate date list from dataList
-    public static List<String> getDateList(List<String> data) {
-        List<String> dateList = new ArrayList<>();
+    // create separate weight list from dataList
+    public static List<String> getWeightList(List<String> data) {
+        List<String> weightList = new ArrayList<>();
         for (int i = 1; i < data.size(); i = i + 2) {
-            dateList.add(data.get(i));
+            weightList.add(data.get(i));
         }
-        return dateList;
+        return weightList;
     }
 
-    // create separate program list from dataList
-    public List<String> getProgramList (List<String> data) {
-        List<String> programList = new ArrayList<>();
+    // create separate exercise name list from dataList
+    public List<String> getExerciseNameList (List<String> data) {
+        List<String> exerciseNameList = new ArrayList<>();
         for (int i = 0; i < data.size(); i = i + 2) {
-            programList.add(data.get(i));
+            exerciseNameList.add(data.get(i));
         }
-        return programList;
+        return exerciseNameList;
     }
 
-    public void populateList(List<String> programList, List<String> dateList) {
-        ListView listView = (ListView) findViewById(R.id.customListViewMyProgram);
-        MyProgramsAdapter myProgramsAdapter = new MyProgramsAdapter(this, programList, dateList);
+    public void populateList(List<String> exerciseNameList, List<String> weightList) {
+        ListView listView = (ListView) findViewById(R.id.customListViewMyExercises);
+        MyProgramsAdapter myProgramsAdapter = new MyProgramsAdapter(this, exerciseNameList, weightList);
         listView.setAdapter(myProgramsAdapter);
     }
 
     public void getUserExercisesAsync() {
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "https://frittblas.se/upload/uploads/getuserprograms.php" +
-                "?username=" + currentUser;
+        String url = "https://frittblas.se/upload/uploads/getuserexercises.php" +
+                "?user_program_count=" + userProgramId + "&username=" + currentUser;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         dataList = Arrays.asList(response.split(";"));
-                        List<String> programList = getProgramList(dataList);
-                        List<String> dateList = getDateList(dataList);
-                        populateList(programList, dateList);
+                        List<String> exerciseNameList = getExerciseNameList(dataList);
+                        List<String> weightList = getWeightList(dataList);
+                        populateList(exerciseNameList, weightList);
                     }
                 }, new Response.ErrorListener() {
             @Override

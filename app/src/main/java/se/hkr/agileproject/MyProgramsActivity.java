@@ -40,7 +40,7 @@ public class MyProgramsActivity extends AppCompatActivity {
         program.setText("My Programs");
     }
 
-    public void switchActivity(String selectedProgram, int userProgramId) {
+    public void switchActivity(String selectedProgram, String userProgramId) {
         Intent myIntent = new Intent(this, MyExercisesActivity.class);
         myIntent.putExtra("username", currentUser);
         myIntent.putExtra("program", selectedProgram);
@@ -71,15 +71,15 @@ public class MyProgramsActivity extends AppCompatActivity {
     }
 
     // create separate user program id list from dataList
-    public List<Integer> getupIdList (List<String> data) {
-        List<Integer> upIdList = new ArrayList<>();
+    public List<String> getupIdList (List<String> data) {
+        List<String> upIdList = new ArrayList<>();
         for (int i = 2; i < data.size(); i = i + 3) {
-            upIdList.add(Integer.parseInt(data.get(i)));
+            upIdList.add(data.get(i));
         }
         return upIdList;
     }
 
-    public void populateList(List<String> programList, List<String> dateList, List<Integer> upIdlist) {
+    public void populateList(List<String> programList, List<String> dateList, List<String> upIdlist) {
         ListView listView = (ListView) findViewById(R.id.customListViewMyProgram);
         MyProgramsAdapter myProgramsAdapter = new MyProgramsAdapter(this, programList, dateList);
         listView.setAdapter(myProgramsAdapter);
@@ -88,7 +88,7 @@ public class MyProgramsActivity extends AppCompatActivity {
 //            @Override
 //            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //                String selectedItem = (String) parent.getItemAtPosition(position);
-//                int userProgramId = upIdlist.get(position);
+//                String userProgramId = upIdlist.get(position);
 //                switchActivity(selectedItem, userProgramId);
 //            }
 //        });
@@ -107,7 +107,7 @@ public class MyProgramsActivity extends AppCompatActivity {
                         dataList = Arrays.asList(response.split(";"));
                         List<String> programList = getProgramList(dataList);
                         List<String> dateList = getDateList(dataList);
-                        List<Integer> upIdList = getupIdList(dataList);
+                        List<String> upIdList = getupIdList(dataList);
                         populateList(programList, dateList, upIdList);
                     }
                 }, new Response.ErrorListener() {
