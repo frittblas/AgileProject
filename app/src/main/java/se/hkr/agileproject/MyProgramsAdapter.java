@@ -12,24 +12,24 @@ import java.util.List;
 public class MyProgramsAdapter extends BaseAdapter {
 
     // Change this
-    public List<String> listExercises;
-    public List<String> listSetsReps;
+    public List<String> listOne;
+    public List<String> listTwo;
     private Context context;
 
     public MyProgramsAdapter(Context context, List<String> listExercises, List<String> listSetsReps) {
         this.context = context;
-        this.listExercises = listExercises;
-        this.listSetsReps = listSetsReps;
+        this.listOne = listExercises;
+        this.listTwo = listSetsReps;
     }
 
     @Override
     public int getCount() {
-        return listExercises.size();
+        return listOne.size();
     }
 
     @Override
     public String getItem(int position) {
-        return listExercises.get(position);
+        return listOne.get(position);
     }
 
     @Override
@@ -59,8 +59,8 @@ public class MyProgramsAdapter extends BaseAdapter {
             listViewHolder= (MyProgramsViewHolder) row.getTag();
         }
 
-        listViewHolder.programName.setText(listExercises.get(position));
-        listViewHolder.date.setText(listSetsReps.get(position));
+        listViewHolder.programName.setText(listOne.get(position));
+        listViewHolder.date.setText(listTwo.get(position));
 
         return row;
     }
