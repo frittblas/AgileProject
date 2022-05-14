@@ -27,7 +27,8 @@ public class HomeActivity extends AppCompatActivity {
 
     enum toActivity {
         SELECT_PROGRAM,
-        THE_WALL
+        THE_WALL,
+        MY_PROGRAMS
     }
 
     @Override
@@ -60,6 +61,10 @@ public class HomeActivity extends AppCompatActivity {
                 myIntent = new Intent(this, WallActivity.class);
                 break;
 
+            case MY_PROGRAMS :
+                myIntent = new Intent(this, MyProgramsActivity.class);
+                break;
+
         }
 
         if(myIntent != null) {
@@ -75,6 +80,10 @@ public class HomeActivity extends AppCompatActivity {
 
     public void onClickWall(View v) {
         switchActivity(toActivity.THE_WALL);
+    }
+
+    public void onClickMyPrograms(View v) {
+        switchActivity(toActivity.MY_PROGRAMS);
     }
 
     public void setLatestPost(String post) {
