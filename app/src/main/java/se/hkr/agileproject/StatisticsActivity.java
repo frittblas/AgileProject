@@ -3,6 +3,7 @@ package se.hkr.agileproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 public class StatisticsActivity extends AppCompatActivity {
 
@@ -11,4 +12,12 @@ public class StatisticsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
     }
+
+    public void onClickBack(View v) {
+
+        finish();
+
+    }
+
 }
+
