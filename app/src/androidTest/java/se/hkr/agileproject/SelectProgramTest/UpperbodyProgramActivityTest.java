@@ -1,4 +1,4 @@
-package se.hkr.agileproject.SelectProgramActivityTest;
+package se.hkr.agileproject.SelectProgramTest;
 
 
 import static androidx.test.espresso.Espresso.onData;

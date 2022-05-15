@@ -1,4 +1,4 @@
-package se.hkr.agileproject.SelectProgramActivityTest;
+package se.hkr.agileproject.SelectProgramTest;
 
 
 import static androidx.test.espresso.Espresso.onData;
@@ -37,60 +37,61 @@ import se.hkr.agileproject.SelectProgramActivity;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class LegsProgramActivityTest {
+public class LowerbodyProgramActivityTest {
 
     @Rule
     public ActivityTestRule<SelectProgramActivity> mActivityTestRule = new ActivityTestRule<>(SelectProgramActivity.class);
 
     @Test
-    public void legsProgramActivityTest() {
+    public void lowerbodyProgramActivityTest() {
         DataInteraction appCompatCheckedTextView = onData(anything())
                 .inAdapterView(Matchers.allOf(ViewMatchers.withId(R.id.listview),
                         childAtPosition(
                                 withId(R.id.rl),
                                 0)))
-                .atPosition(3);
+                .atPosition(4);
         appCompatCheckedTextView.perform(click());
 
         ViewInteraction textView = onView(
-                allOf(withId(R.id.activityName), withText("Legs"),
+                allOf(withId(R.id.activityName), withText("Lower-body"),
                         withParent(allOf(withId(R.id.layoutHeader),
                                 withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class)))),
                         isDisplayed()));
-        textView.check(matches(withText("Legs")));
+        textView.check(matches(withText("Lower-body")));
 
         ViewInteraction textView2 = onView(
-                allOf(withId(R.id.exerciseNameShowProgram), withText("Barbell Squat"),
-                        withParent(withParent(withId(R.id.customListViewShowProgram))),
+                allOf(withId(R.id.activityName), withText("Lower-body"),
+                        withParent(allOf(withId(R.id.layoutHeader),
+                                withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class)))),
                         isDisplayed()));
-        textView2.check(matches(isDisplayed()));
+        textView2.check(matches(withText("Lower-body")));
 
         ViewInteraction textView3 = onView(
-                allOf(withId(R.id.exerciseNameShowProgram), withText("Stiff Leg Deadlift"),
+                allOf(withId(R.id.exerciseNameShowProgram), withText("Barbell Squat"),
                         withParent(withParent(withId(R.id.customListViewShowProgram))),
                         isDisplayed()));
         textView3.check(matches(isDisplayed()));
 
         ViewInteraction textView4 = onView(
-                allOf(withId(R.id.exerciseNameShowProgram), withText("Seated Leg Curl"),
+                allOf(withId(R.id.exerciseNameShowProgram), withText("Stiff Leg Deadlift"),
                         withParent(withParent(withId(R.id.customListViewShowProgram))),
                         isDisplayed()));
         textView4.check(matches(isDisplayed()));
 
         ViewInteraction textView5 = onView(
-                allOf(withId(R.id.exerciseNameShowProgram), withText("Leg Extension"),
+                allOf(withId(R.id.exerciseNameShowProgram), withText("Seated Leg Curl"),
                         withParent(withParent(withId(R.id.customListViewShowProgram))),
                         isDisplayed()));
         textView5.check(matches(isDisplayed()));
 
         ViewInteraction textView6 = onView(
-                allOf(withId(R.id.exerciseNameShowProgram), withText("Seated Calf Raise"),
+                allOf(withId(R.id.exerciseNameShowProgram), withText("Leg Extension"),
                         withParent(withParent(withId(R.id.customListViewShowProgram))),
                         isDisplayed()));
         textView6.check(matches(isDisplayed()));
 
         ViewInteraction textView7 = onView(
-                allOf(withId(R.id.exerciseNameShowProgram), withText("Weighted Decline Crunch"),
+                allOf(withId(R.id.exerciseNameShowProgram), withText("Seated Calf Raise"),
                         withParent(withParent(withId(R.id.customListViewShowProgram))),
                         isDisplayed()));
         textView7.check(matches(isDisplayed()));

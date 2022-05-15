@@ -1,4 +1,4 @@
-package se.hkr.agileproject.RegisterActivityTest;
+package se.hkr.agileproject.RegisterTest;
 
 
 import static androidx.test.espresso.Espresso.onView;

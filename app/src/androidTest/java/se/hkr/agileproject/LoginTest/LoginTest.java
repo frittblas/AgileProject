@@ -1,4 +1,4 @@
-package se.hkr.agileproject.LoginActivityTest;
+package se.hkr.agileproject.LoginTest;
 
 
 import static androidx.test.espresso.Espresso.onView;
@@ -37,7 +37,7 @@ import se.hkr.agileproject.R;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class LoginActivityTest {
+public class LoginTest {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
@@ -85,7 +85,7 @@ public class LoginActivityTest {
         appCompatButton.perform(click());
 
         ViewInteraction textView = onView(
-                allOf(withId(R.id.textView), withText("iHasTrained"),
+                allOf(withId(R.id.textView), withText("getTrained"),
                         withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
         textView.check(matches(isDisplayed()));
