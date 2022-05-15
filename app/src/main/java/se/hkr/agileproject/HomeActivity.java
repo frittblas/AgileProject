@@ -28,7 +28,8 @@ public class HomeActivity extends AppCompatActivity {
     enum toActivity {
         SELECT_PROGRAM,
         THE_WALL,
-        MY_PROGRAMS
+        MY_PROGRAMS,
+        STATISTICS
     }
 
     @Override
@@ -65,6 +66,10 @@ public class HomeActivity extends AppCompatActivity {
                 myIntent = new Intent(this, MyProgramsActivity.class);
                 break;
 
+            case STATISTICS :
+                myIntent = new Intent(this, StatisticsActivity.class);
+                break;
+
         }
 
         if(myIntent != null) {
@@ -84,6 +89,15 @@ public class HomeActivity extends AppCompatActivity {
 
     public void onClickMyPrograms(View v) {
         switchActivity(toActivity.MY_PROGRAMS);
+    }
+
+    public void onClickStatistics(View v) {
+        switchActivity(toActivity.STATISTICS);
+    }
+
+    public void onClickLatest(View v) {
+        getLatestPostAsync();
+        Toast.makeText(getApplicationContext(), "Updated!", Toast.LENGTH_SHORT).show();
     }
 
     public void setLatestPost(String post) {
