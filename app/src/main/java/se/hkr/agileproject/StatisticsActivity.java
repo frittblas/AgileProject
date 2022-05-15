@@ -2,6 +2,7 @@ package se.hkr.agileproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
@@ -36,7 +37,18 @@ public class StatisticsActivity extends AppCompatActivity {
                 new DataPoint(3, 2),
                 new DataPoint(4, 6)
         });
+
         graph.addSeries(series);
+
+        series.setDataPointsRadius(12);
+        series.setThickness(8);
+
+        // set graph parameters
+
+        graph.setTitle("Your weight the last year.");
+        graph.setTitleTextSize(60);
+        //graph.setTitleColor(Color.BLUE);
+
 
     }
 
