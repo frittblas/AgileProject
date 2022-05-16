@@ -38,8 +38,6 @@ public class MyExercisesActivity extends AppCompatActivity {
         getUserExercisesAsync();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_exercises);
-        //TextView program = (TextView) findViewById(R.id.activityName);
-        //program.setText(selectedProgram);
     }
 
     public void onClickBack(View v) {
@@ -47,18 +45,20 @@ public class MyExercisesActivity extends AppCompatActivity {
     }
 
     // create separate weight list from dataList
+    // last position in dataList is garbage, therefore data.size-1
     public static List<String> getWeightList(List<String> data) {
         List<String> weightList = new ArrayList<>();
-        for (int i = 1; i < data.size(); i = i + 2) {
+        for (int i = 1; i < data.size()-1; i = i + 2) {
             weightList.add(data.get(i));
         }
         return weightList;
     }
 
     // create separate exercise name list from dataList
+    // last position in dataList is garbage, therefore data.size-1
     public List<String> getExerciseNameList (List<String> data) {
         List<String> exerciseNameList = new ArrayList<>();
-        for (int i = 0; i < data.size(); i = i + 2) {
+        for (int i = 0; i < data.size()-1; i = i + 2) {
             exerciseNameList.add(data.get(i));
         }
         return exerciseNameList;
@@ -73,8 +73,7 @@ public class MyExercisesActivity extends AppCompatActivity {
     public void getUserExercisesAsync() {
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "https://frittblas.se/upload/uploads/getuserexercises.php?user_program_count=1test&username=marcus"; //+
-            //"?user_program_count=" + userProgramId + "&username=" + currentUser;
+        String url = "https://frittblas.se/upload/uploads/getuserexercises.php?userprogramid=" + userProgramId + "&username=" + currentUser;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
