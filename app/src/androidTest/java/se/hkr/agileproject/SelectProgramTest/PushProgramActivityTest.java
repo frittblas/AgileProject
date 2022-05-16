@@ -1,4 +1,4 @@
-package se.hkr.agileproject.SelectProgramActivityTest;
+package se.hkr.agileproject.SelectProgramTest;
 
 
 import static androidx.test.espresso.Espresso.onData;
@@ -37,57 +37,57 @@ import se.hkr.agileproject.SelectProgramActivity;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class PullProgramActivityTest {
+public class PushProgramActivityTest {
 
     @Rule
     public ActivityTestRule<SelectProgramActivity> mActivityTestRule = new ActivityTestRule<>(SelectProgramActivity.class);
 
     @Test
-    public void pullProgramActivityTest() {
+    public void pushProgramActivityTest() {
         DataInteraction appCompatCheckedTextView = onData(anything())
                 .inAdapterView(Matchers.allOf(ViewMatchers.withId(R.id.listview),
                         childAtPosition(
                                 withId(R.id.rl),
                                 0)))
-                .atPosition(5);
+                .atPosition(6);
         appCompatCheckedTextView.perform(click());
 
         ViewInteraction textView = onView(
-                allOf(withId(R.id.activityName), withText("Pull"),
+                allOf(withId(R.id.activityName), withText("Push"),
                         withParent(allOf(withId(R.id.layoutHeader),
-                                withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class)))),
+                                withParent(IsInstanceOf.<View>instanceOf(ViewGroup.class)))),
                         isDisplayed()));
-        textView.check(matches(withText("Pull")));
+        textView.check(matches(withText("Push")));
 
         ViewInteraction textView2 = onView(
-                allOf(withId(R.id.exerciseNameShowProgram), withText("Deadlift"),
+                allOf(withId(R.id.exerciseNameShowProgram), withText("Dumbbell Bench Press"),
                         withParent(withParent(withId(R.id.customListViewShowProgram))),
                         isDisplayed()));
         textView2.check(matches(isDisplayed()));
 
-        ViewInteraction textView3 = onView(
-                allOf(withId(R.id.exerciseNameShowProgram), withText("Bent-Over Barbell Row"),
-                        withParent(withParent(withId(R.id.customListViewShowProgram))),
-                        isDisplayed()));
-        textView3.check(matches(isDisplayed()));
-
         ViewInteraction textView4 = onView(
-                allOf(withId(R.id.exerciseNameShowProgram), withText("Alternating Dumbbell Curl"),
+                allOf(withId(R.id.exerciseNameShowProgram), withText("Dumbbell Shoulder Press"),
                         withParent(withParent(withId(R.id.customListViewShowProgram))),
                         isDisplayed()));
         textView4.check(matches(isDisplayed()));
 
-        ViewInteraction textView5 = onView(
-                allOf(withId(R.id.exerciseNameShowProgram), withText("Lat Pulldown"),
-                        withParent(withParent(withId(R.id.customListViewShowProgram))),
-                        isDisplayed()));
-        textView5.check(matches(isDisplayed()));
-
         ViewInteraction textView6 = onView(
-                allOf(withId(R.id.exerciseNameShowProgram), withText("Reverse Incline Dumbbell Rear Delt Raise"),
+                allOf(withId(R.id.exerciseNameShowProgram), withText("Tricep Pushdown"),
                         withParent(withParent(withId(R.id.customListViewShowProgram))),
                         isDisplayed()));
         textView6.check(matches(isDisplayed()));
+
+        ViewInteraction textView8 = onView(
+                allOf(withId(R.id.exerciseNameShowProgram), withText("Incline Dumbbell Bench Press"),
+                        withParent(withParent(withId(R.id.customListViewShowProgram))),
+                        isDisplayed()));
+        textView8.check(matches(isDisplayed()));
+
+        ViewInteraction textView10 = onView(
+                allOf(withId(R.id.exerciseNameShowProgram), withText("Dumbbell Lateral Raise"),
+                        withParent(withParent(withId(R.id.customListViewShowProgram))),
+                        isDisplayed()));
+        textView10.check(matches(isDisplayed()));
     }
 
     private static Matcher<View> childAtPosition(

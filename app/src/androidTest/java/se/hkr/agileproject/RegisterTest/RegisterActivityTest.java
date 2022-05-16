@@ -1,13 +1,12 @@
-package se.hkr.agileproject.RegisterActivityTest;
+package se.hkr.agileproject.RegisterTest;
 
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.pressImeActionButton;
-import static androidx.test.espresso.action.ViewActions.replaceText;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
@@ -29,57 +28,61 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import se.hkr.agileproject.MainActivity;
 import se.hkr.agileproject.R;
-import se.hkr.agileproject.RegisterActivity;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class UsernameTakenTest {
+public class RegisterActivityTest {
 
     @Rule
-    public ActivityTestRule<RegisterActivity> mActivityTestRule = new ActivityTestRule<>(RegisterActivity.class);
+    public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void usernameTakenTest() {
-        ViewInteraction appCompatEditText = onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.username),
+    public void registerActivityTest() {
+        ViewInteraction materialTextView = onView(
+                Matchers.allOf(ViewMatchers.withId(R.id.textRegister), withText("New Here? Create Account"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
-                                2),
+                                5),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("test"), closeSoftKeyboard());
+        materialTextView.perform(click());
 
-        ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.password),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                3),
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.textView2), withText("Register a new account"),
+                        withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
-        appCompatEditText2.perform(replaceText("passwordtest"), closeSoftKeyboard());
+        textView.check(matches(withText("Register a new account")));
 
-        ViewInteraction appCompatEditText3 = onView(
-                allOf(withId(R.id.password), withText("passwordtest"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                3),
+        ViewInteraction button = onView(
+                allOf(withId(R.id.btnRegister), withText("REGISTER"),
+                        withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
-        appCompatEditText3.perform(pressImeActionButton());
+        button.check(matches(isDisplayed()));
 
-        ViewInteraction appCompatButton = onView(
-                allOf(withId(R.id.btnRegister), withText("Register"),
+        ViewInteraction textView2 = onView(
+                allOf(withId(R.id.textRegister), withText("Already Registered? Login Here"),
+                        withParent(withParent(withId(android.R.id.content))),
+                        isDisplayed()));
+        textView2.check(matches(withText("Already Registered? Login Here")));
+
+        ViewInteraction materialTextView2 = onView(
+                allOf(withId(R.id.textRegister), withText("Already Registered? Login Here"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
-                                4),
+                                5),
                         isDisplayed()));
-        appCompatButton.perform(click());
+        materialTextView2.perform(click());
+
+        ViewInteraction textView3 = onView(
+                allOf(withId(R.id.textView2), withText("Log-in to your account"),
+                        withParent(withParent(withId(android.R.id.content))),
+                        isDisplayed()));
+        textView3.check(matches(withText("Log-in to your account")));
     }
 
     private static Matcher<View> childAtPosition(
