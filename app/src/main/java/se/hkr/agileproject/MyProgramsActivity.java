@@ -84,14 +84,14 @@ public class MyProgramsActivity extends AppCompatActivity {
         MyProgramsAdapter myProgramsAdapter = new MyProgramsAdapter(this, programList, dateList);
         listView.setAdapter(myProgramsAdapter);
 
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                String selectedItem = (String) parent.getItemAtPosition(position);
-//                String userProgramId = upIdlist.get(position);
-//                switchActivity(selectedItem, userProgramId);
-//            }
-//        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = (String) parent.getItemAtPosition(position);
+                String userProgramId = upIdlist.get(position);
+                switchActivity(selectedItem, userProgramId);
+            }
+        });
     }
 
     public void getUserProgramsAsync() {

@@ -9,26 +9,26 @@ import android.widget.BaseAdapter;
 
 import java.util.List;
 
-public class MyProgramsAdapter extends BaseAdapter {
+public class MyExercisesAdapter extends BaseAdapter {
 
-    public List<String> listPrograms;
-    public List<String> listDate;
+    public List<String> listExercises;
+    public List<String> listWeight;
     private Context context;
 
-    public MyProgramsAdapter(Context context, List<String> listPrograms, List<String> listDate) {
+    public MyExercisesAdapter(Context context, List<String> listExercises, List<String> listWeight) {
         this.context = context;
-        this.listPrograms = listPrograms;
-        this.listDate = listDate;
+        this.listExercises = listExercises;
+        this.listWeight = listWeight;
     }
 
     @Override
     public int getCount() {
-        return listPrograms.size();
+        return listExercises.size();
     }
 
     @Override
     public String getItem(int position) {
-        return listPrograms.get(position);
+        return listExercises.get(position);
     }
 
     @Override
@@ -42,24 +42,24 @@ public class MyProgramsAdapter extends BaseAdapter {
     public View getView(final int position, View convertView
             , ViewGroup parent) {
         View row;
-        final MyProgramsViewHolder listViewHolder;
+        final MyExercisesViewHolder listViewHolder;
         if(convertView == null)
         {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            row = layoutInflater.inflate(R.layout.activity_custom_my_programs_listview,parent,false);
-            listViewHolder = new MyProgramsViewHolder();
-            listViewHolder.programName = row.findViewById(R.id.programNameMyPrograms);
-            listViewHolder.date = row.findViewById(R.id.dateMyPrograms);
+            row = layoutInflater.inflate(R.layout.activity_custom_my_exercises_listview,parent,false);
+            listViewHolder = new MyExercisesViewHolder();
+            listViewHolder.exerciseName = row.findViewById(R.id.exerciseNameMyExercises);
+            listViewHolder.weight = row.findViewById(R.id.weightMyExercises);
             row.setTag(listViewHolder);
         }
         else
         {
             row=convertView;
-            listViewHolder= (MyProgramsViewHolder) row.getTag();
+            listViewHolder= (MyExercisesViewHolder) row.getTag();
         }
 
-        listViewHolder.programName.setText(listPrograms.get(position));
-        listViewHolder.date.setText(listDate.get(position));
+        listViewHolder.exerciseName.setText(listExercises.get(position));
+        listViewHolder.weight.setText(listWeight.get(position));
 
         return row;
     }
