@@ -38,8 +38,8 @@ public class MyExercisesActivity extends AppCompatActivity {
         getUserExercisesAsync();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_exercises);
-        TextView program = (TextView) findViewById(R.id.activityName);
-        program.setText(selectedProgram);
+        //TextView program = (TextView) findViewById(R.id.activityName);
+        //program.setText(selectedProgram);
     }
 
     public void onClickBack(View v) {
@@ -66,15 +66,15 @@ public class MyExercisesActivity extends AppCompatActivity {
 
     public void populateList(List<String> exerciseNameList, List<String> weightList) {
         ListView listView = (ListView) findViewById(R.id.customListViewMyExercises);
-        MyProgramsAdapter myProgramsAdapter = new MyProgramsAdapter(this, exerciseNameList, weightList);
-        listView.setAdapter(myProgramsAdapter);
+        MyExercisesAdapter myExercisesAdapter = new MyExercisesAdapter(this, exerciseNameList, weightList);
+        listView.setAdapter(myExercisesAdapter);
     }
 
     public void getUserExercisesAsync() {
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "https://frittblas.se/upload/uploads/getuserexercises.php" +
-                "?user_program_count=" + userProgramId + "&username=" + currentUser;
+        String url = "https://frittblas.se/upload/uploads/getuserexercises.php?user_program_count=1test&username=marcus"; //+
+            //"?user_program_count=" + userProgramId + "&username=" + currentUser;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
