@@ -38,6 +38,8 @@ public class MyExercisesActivity extends AppCompatActivity {
         getUserExercisesAsync();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_exercises);
+        TextView program = (TextView) findViewById(R.id.activityName);
+        program.setText(selectedProgram);
     }
 
     public void onClickBack(View v) {
