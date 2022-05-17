@@ -4,8 +4,8 @@
 
     <gradient
         android:angle="1"
-        android:endColor="@color/teal_200"
-        android:startColor="@color/purple_200" />
+        android:endColor="@color/Orange_1"
+        android:startColor="@color/app_icon_color" />
 
 
 
