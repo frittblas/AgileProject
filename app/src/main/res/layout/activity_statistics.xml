@@ -124,10 +124,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/image_wallpost_background"
+        android:textColor="@color/white"
         android:onClick="onClickSetTargetWeight"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
