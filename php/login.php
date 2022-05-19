@@ -15,16 +15,16 @@
 $submitData = @$_GET;
 
 // prevent SQL-injection
-$submitData["user_name"] = addslashes($submitData["user_name"]);
+$submitData["username"] = addslashes($submitData["username"]);
 $submitData["password"]  = addslashes($submitData["password"]);
 
 
-// connect to the database, these login credentials are not the real ones
+// connect to the database
 
-$db_host = 'mysql410.blabla';
+$db_host = 'mysqlbla.blabla';
 $db_username = 'agiledev@blabla';
 $db_password = 'agilblabla';
-$db_name = 'frittblas_se_bla_bla';
+$db_name = 'frittblabla';
 
 $con = mysqli_connect($db_host, $db_username, $db_password, $db_name);
 
@@ -36,7 +36,7 @@ if(mysqli_connect_errno())
 
 // run the query
 
-$query = "SELECT * FROM `user` WHERE `user_name` = '" . $submitData["user_name"] . "' AND `password` = '" . $submitData["password"] . "'";
+$query = "SELECT * FROM `user` WHERE `username` = '" . $submitData["username"] . "' AND `password` = '" . $submitData["password"] . "'";
 
 $result = mysqli_query($con, $query);
 $resultcount = mysqli_num_rows($result);
@@ -45,7 +45,7 @@ $resultcount = mysqli_num_rows($result);
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 // print the name of the user (this gets picked up by the app)
-printf("%s", $row["user_name"]);
+printf("%s", $row["username"]);
 
 
 // if we get no results, the user must not exist or wrong password.

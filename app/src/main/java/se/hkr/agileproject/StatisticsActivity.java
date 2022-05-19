@@ -108,7 +108,10 @@ public class StatisticsActivity extends AppCompatActivity {
             //targetWeight = Integer.parseInt(weight);
             //populateGraph(targetWeight, userWeightListWithDates);
             //getUserWeightAsync();
+            Intent intent = getIntent();
+            //intent.putExtra("username", currentUser); // not needed
             finish();
+            startActivity(intent);
 
         } else {
             Toast.makeText(getApplicationContext(), "No input!", Toast.LENGTH_SHORT).show();
@@ -133,7 +136,11 @@ public class StatisticsActivity extends AppCompatActivity {
             //series1.appendData(new DataPoint(0, targetWeight), true, 4);
             //series1.appendData(new DataPoint(365, targetWeight), true, 4);
             //graph.addSeries(series1);
+
+            Intent intent = getIntent();
+            //intent.putExtra("username", currentUser); // not needed
             finish();
+            startActivity(intent);
         } else {
             Toast.makeText(getApplicationContext(), "No input!", Toast.LENGTH_SHORT).show();
         }
