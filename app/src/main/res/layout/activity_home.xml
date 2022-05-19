@@ -65,10 +65,9 @@
             android:id="@+id/appIcon"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            app:layout_constraintStart_toEndOf="@id/textUsername"
-            android:layout_marginStart="160dp"
+            app:layout_constraintStart_toEndOf="@id/welcomeMessage"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="20dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/dumbbell" />
