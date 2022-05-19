@@ -16,10 +16,10 @@ $submitData["password"]  = addslashes($submitData["password"]);
 
 // connect to the database
 
-$db_host = 'mysql410.blabla';
+$db_host = 'mysqlbla.blabla';
 $db_username = 'agiledev@blabla';
 $db_password = 'agilblabla';
-$db_name = 'frittblas_se_bla_bla';
+$db_name = 'frittblabla';
 
 $con = mysqli_connect($db_host, $db_username, $db_password, $db_name);
 
@@ -35,7 +35,8 @@ $query = "INSERT INTO `user` (username, password)
 
 if (!mysqli_query($con, $query)) {
 	
-  echo("Error: " . mysqli_error($con));
+  //echo("Error: " . mysqli_error($con));
+  echo("Username taken.");
   
 } else {
 	
