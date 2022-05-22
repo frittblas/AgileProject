@@ -11,3 +11,5 @@ History for all programs the user has finished is stored in this feature.
 In this feature they will be able to store their bodyweight each day and be shown a graph for the weight development, a function to input goal weight to be shown is the graph is also available.
 ### The Wall
 A message board for all users to be able to connect with each other.
+
+![alt text](https://frittblas.se/upload/uploads/chrome_isGwsWRLVr.png)
