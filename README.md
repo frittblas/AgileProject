@@ -13,4 +13,4 @@ In this feature they will be able to store their bodyweight each day and be show
 A message board for all users to be able to connect with each other.
 ### Screenshots
 
-![alt text](https://frittblas.se/upload/uploads/chrome_isGwsWRLVr.png)
+![alt text](https://www.kastanjen.net/upload/uploads/login.png)
